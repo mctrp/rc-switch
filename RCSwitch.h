@@ -175,6 +175,7 @@ class RCSwitch {
     /* 
      * timings[0] contains sync timing, followed by a number of bits
      */
+  public:
     static unsigned int timings[RCSWITCH_MAX_CHANGES];
     #endif
 
