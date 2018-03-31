@@ -80,7 +80,7 @@ static const RCSwitch::Protocol PROGMEM proto[] = {
   { 500, {  6, 14 }, {  1,  2 }, {  2,  1 }, false },    // protocol 5
   { 450, { 23,  1 }, {  1,  2 }, {  2,  1 }, true  },    // protocol 6 (HT6P20B)
   { 150, {  2, 62 }, {  1,  6 }, {  6,  1 }, false },    // protocol 7 (HS2303-PT, i. e. used in AUKEY Remote)
-  { 640, {  1, 10 }, {  1,  2 }, {  2,  1 }, true  },    // protocol 8 (Mandolyn/Lidl TR-502MSV/RC-402/RC-402DX)
+  { 640, {  1,115 }, {  1,  2 }, {  2,  1 }, true  },    // protocol 8 (Mandolyn/Lidl TR-502MSV/RC-402/RC-402DX)
 };
 
 enum {
@@ -608,9 +608,7 @@ bool RECEIVE_ATTR RCSwitch::receiveProtocol(const int p, unsigned int changeCoun
 #endif
 
     unsigned long code = 0;
-    //Assuming the longer pulse length is the pulse captured in timings[0]
-    const unsigned int syncLengthInPulses =  ((pro.syncFactor.low) > (pro.syncFactor.high)) ? (pro.syncFactor.low) : (pro.syncFactor.high);
-    const unsigned int delay = RCSwitch::timings[0] / syncLengthInPulses;
+    const unsigned int delay = pro.pulseLength;
     const unsigned int delayTolerance = delay * RCSwitch::nReceiveTolerance / 100;
     
     /* For protocols that start low, the sync period looks like
