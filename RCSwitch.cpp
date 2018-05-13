@@ -81,6 +81,7 @@ static const RCSwitch::Protocol PROGMEM proto[] = {
   { 450, { 23,  1 }, {  1,  2 }, {  2,  1 }, true  },    // protocol 6 (HT6P20B)
   { 150, {  2, 62 }, {  1,  6 }, {  6,  1 }, false },    // protocol 7 (HS2303-PT, i. e. used in AUKEY Remote)
   { 640, {  1,115 }, {  1,  2 }, {  2,  1 }, true  },    // protocol 8 (Mandolyn/Lidl TR-502MSV/RC-402/RC-402DX)
+  { 488, {  1,  1 }, {  1,  4 }, {  1,  8 }, false },    // protocol 9, RF Thermo/Igrometers
 };
 
 enum {
