@@ -47,6 +47,8 @@
     #include "WProgram.h"
 #endif
 
+#define HAS_RC_ONRXBUFFER
+
 #include <stdint.h>
 
 
@@ -177,8 +179,10 @@ class RCSwitch {
      */
     static unsigned int timings[RCSWITCH_MAX_CHANGES];
 
+    #ifdef HAS_RC_ONRXBUFFER
     public:
     static void (*onRxBufferDebug)(int count, unsigned int *timings);
+    #endif
 
     #endif
 };
